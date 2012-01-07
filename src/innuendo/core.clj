@@ -43,6 +43,14 @@
   [id options]
   (req :post "paste/%s" [id] options))
 
+(defn fork-paste
+  "Fork an existing paste to your account.
+   Options are:
+      username -- Required.
+      token    -- Required."
+  [id options]
+  (req :post "paste/%s/fork" [id] options))
+
 (defn get-paste
   "Get an existing paste."
   [id]
