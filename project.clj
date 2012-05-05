@@ -1,4 +1,4 @@
-(defproject innuendo "0.1.1"
+(defproject innuendo "0.1.2"
   :description "A simple API library for refheap.com"
   :dependencies [[clojure "1.3.0"]
                  [clj-http "0.2.6"]

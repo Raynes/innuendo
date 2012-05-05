@@ -13,7 +13,7 @@
   (process-response
    (http/request
     (merge {:method method
-            :url (str "https://refheap.com/api/"
+            :url (str "https://www.refheap.com/api/"
                       (apply format endpoint positional))
             :throw-exceptions false}
            {(if (= method :post) :form-params :query-params) optional}))))
