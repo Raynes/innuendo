@@ -1,11 +1,15 @@
 (ns innuendo.core
-  (:require [clj-http.client :as http]
-            [cheshire.core :as json]))
+  (:require [clj-http.client :as http]))
+
+(defn read-clojure [data]
+  (binding [*read-eval* false]
+    (prn data)
+    (read-string data)))
 
 (defn process-response [{:keys [status] :as resp}]
   (cond
-   (#{404 400 422} status) (assoc resp :body (json/parse-string (:body resp) true))
-   (#{201 200} status) (json/parse-string (:body resp) true)
+   (#{404 400 422} status) (assoc resp :body (read-clojure (:body resp)))
+   (#{201 200} status) (read-clojure (:body resp))
    (= 204 status) true
    :else resp))
 
@@ -13,10 +17,11 @@
   (process-response
    (http/request
     (merge {:method method
-            :url (str "https://www.refheap.com/api/"
+            :url (str "http://localhost:8080/api/"
                       (apply format endpoint positional))
             :throw-exceptions false}
-           {(if (= method :post) :form-params :query-params) optional}))))
+           {(if (= method :post) :form-params :query-params)
+            (assoc optional :return "clojure")}))))
 
 (defn create-paste
   "Create a new paste.
