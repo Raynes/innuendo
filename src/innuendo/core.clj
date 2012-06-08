@@ -3,7 +3,6 @@
 
 (defn read-clojure [data]
   (binding [*read-eval* false]
-    (prn data)
     (read-string data)))
 
 (defn process-response [{:keys [status] :as resp}]
