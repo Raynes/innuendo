@@ -1,4 +1,4 @@
-(defproject innuendo "0.1.5"
+(defproject innuendo "0.1.6"
   :license {:name "Eclipse Public License - v 1.0"
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo}
