@@ -4,7 +4,7 @@ This is a little API library for the [RefHeap](http://refheap.com/api) pasting A
 
 ## Usage
 
-In Leiningen: `:dependencies [[innuendo "0.1.1"]]`
+Check https://clojars.org/innuendo for the latest version.
 
 Here are some examples:
 
